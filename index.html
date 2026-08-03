@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamil Miklaszewski — CV / Portfolio 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f3ed;
+      --surface: #fbf9f5;
+      --surface-2: #ffffff;
+      --surface-3: #f1ece5;
+      --text: #181714;
+      --muted: #676058;
+      --faint: #93897d;
+      --line: #ddd5ca;
+      --primary: #0f676d;
+      --primary-dark: #0b4c50;
+      --max: 1360px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --shadow: 0 12px 35px rgba(24, 23, 20, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .2s ease, background .2s ease;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    .page {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 40px;
+    }
+    .sidebar {
+      position: sticky;
+      top: 22px;
+      align-self: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .logo {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      color: var(--primary);
+    }
+    .sidebar h1 {
+      margin: 0;
+      font-size: clamp(2rem, 1.7rem + 1vw, 2.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+    .job-title {
+      margin: 12px 0 24px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 0 0 22px;
+    }
+    .nav a {
+      padding: 11px 14px;
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: .96rem;
+      font-weight: 500;
+    }
+    .nav a:hover,
+    .nav a.active {
+      background: var(--surface-3);
+      color: var(--text);
+    }
+    .sidebar-meta {
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 10px;
+      font-size: .95rem;
+    }
+    .sidebar-meta a { color: var(--primary); font-weight: 700; }
+    .main {
+      display: grid;
+      gap: 22px;
+    }
+    .panel {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .portrait {
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 1.55rem + 1vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+    p { margin: 0; max-width: 75ch; }
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .stats,
+    .contact-grid,
+    .double {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .double { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stat,
+    .mini-card,
+    .contact-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: #fcfaf7;
+    }
+    .stat strong,
+    .contact-card strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+    }
+    .section-header { margin-bottom: 18px; }
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+    .entry {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      background: #fcfaf7;
+    }
+    .entry-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .meta {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    .sub {
+      margin: 14px 0 0;
+      color: var(--faint);
+      font-weight: 600;
+      font-size: .92rem;
+    }
+    ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+    li + li { margin-top: 6px; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .chip {
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface-3);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      background: var(--primary);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .cta:hover { background: var(--primary-dark); }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+      transition-delay: var(--delay, 0ms);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .footer-note {
+      color: var(--faint);
+      font-size: .88rem;
+    }
+    @media (max-width: 1100px) {
+      .page {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .sidebar { position: static; }
+    }
+    @media (max-width: 760px) {
+      .page { width: min(var(--max), calc(100% - 24px)); padding-top: 18px; }
+      .panel { padding: 22px; border-radius: 22px; }
+      .hero { grid-template-columns: 1fr; }
+      .portrait { width: 150px; height: 150px; }
+      .stats, .contact-grid, .double { grid-template-columns: 1fr; }
+      .entry { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <svg class="logo" viewBox="0 0 64 64" fill="none" aria-label="KM logo">
+        <path d="M12 50V14h8v16l16-16h10L29 31l18 19H36L20 33v17h-8Z" fill="currentColor"/>
+        <path d="M46 50V14h8v36h-8Z" fill="currentColor" opacity=".45"/>
+      </svg>
+      <h1>Kamil<br>Miklaszewski</h1>
+      <p class="job-title">Game Developer / Technical Designer</p>
+
+      <nav class="nav">
+        <a href="#welcome">Welcome</a>
+        <a href="#professional-projects">Professional Projects</a>
+        <a href="#curriculum-vitae">Curriculum Vitae (CV)</a>
+        <a href="#technical-skills">Technical Skills</a>
+        <a href="#personal-projects">Personal Projects</a>
+        <a href="#contact-me">Contact Me</a>
+      </nav>
+
+      <div class="sidebar-meta">
+        <a href="mailto:kamilmiklaszewski.dev@gmail.com">kamilmiklaszewski.dev@gmail.com</a>
+        <a href="https://www.linkedin.com/in/kamil-miklaszewski-7a5609201" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/kmiklaszewski1" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://kmiklaszewski1.github.io/Kamil%20Miklaszewski%20%E2%80%93%20CV%20-%20Github.pdf" target="_blank" rel="noopener noreferrer">Resume PDF</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="panel hero reveal" id="welcome">
+        <img class="portrait" src="https://raw.githubusercontent.com/kmiklaszewski1/kmiklaszewski1.github.io/main/582088064_854637057021471_8330761815630538227_n.jpg" alt="Kamil Miklaszewski" width="190" height="190" loading="lazy">
+        <div>
+          <span class="eyebrow">Welcome</span>
+          <h2>Portfolio i CV w jednym miejscu</h2>
+          <p class="lead">To jest druga wersja Twojej strony — zbudowana w układzie inspirowanym portfolio Josh Caratelli, ale napisana od zera pod Twój profil. Strona łączy prezentację projektów, CV, skilli technicznych i danych kontaktowych w jednej publicznej zakładce, którą możesz normalnie wrzucić na GitHub Pages. [page:51][page:50]</p>
+          <div class="stats" style="margin-top:22px;">
+            <div class="stat"><strong>4 projekty</strong>gry pokazane jako główne case study</div>
+            <div class="stat"><strong>Unity + Unreal</strong>najważniejsze silniki i workflow</div>
+            <div class="stat"><strong>Public CV page</strong>gotowa pod osobny adres URL</div>
+          </div>
+          <a class="cta" href="#professional-projects">Przejdź do projektów</a>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="professional-projects" style="--delay:70ms;">
+        <div class="section-header">
+          <span class="eyebrow">Professional Projects</span>
+          <h2>Selected Game Projects</h2>
+          <p class="lead">U Josh Caratelli sekcja „Professional Projects” pokazuje próbkę najważniejszych produkcji, nad którymi pracował, a cała nawigacja po lewej prowadzi bezpośrednio do tej części strony. W Twojej wersji ten sam model wykorzystałem do przedstawienia najmocniejszych projektów z portfolio w stylu bardziej rekrutacyjnym niż landingowym. [page:51]</p>
+        </div>
+        <div class="stack">
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Carrot Heist</h3>
+              <span class="meta">Lead Programmer & UI Designer · Unity</span>
+            </div>
+            <p>Kooperacyjna gra inspirowana Ogień i Woda. Odpowiadałeś za programowanie, animację wybranych elementów, implementację UI, tworzenie menu głównego oraz złożenie projektu do finalnego buildu na Itch.io. [page:50]</p>
+            <ul>
+              <li>Gameplay systems i integracja mechanik. [page:50]</li>
+              <li>UI flow, menu i logika ekranów. [page:50]</li>
+              <li>Finalizacja projektu do wersji publicznej. [page:50]</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Tap Tap King</h3>
+              <span class="meta">Solo Developer · Unity · iOS</span>
+            </div>
+            <p>Hyper-casualowa gra mobilna wykonana samodzielnie jako projekt studencki. To dobry przykład pracy solo: od pomysłu i mechaniki po gotowy build i naukę projektowania pod urządzenia mobilne. [page:50]</p>
+            <ul>
+              <li>Projektowanie rdzenia rozgrywki dla mobile. [page:50]</li>
+              <li>Pełna implementacja solo. [page:50]</li>
+              <li>Praca nad zakresem i prostotą projektu. [page:50]</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Boomfield</h3>
+              <span class="meta">Programmer & UI/UX Designer · Unreal Engine 5</span>
+            </div>
+            <p>Dynamiczna arena multiplayer inspirowana Bomb It, tworzona przez zespół trzech studentów. W projekcie odpowiadasz za programowanie oraz elementy UI/UX. [page:50]</p>
+            <ul>
+              <li>Mechaniki rywalizacji i logika areny. [page:50]</li>
+              <li>Interfejs pod czytelność rozgrywki. [page:50]</li>
+              <li>Współpraca w małym zespole projektowym. [page:50]</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Game of Spores</h3>
+              <span class="meta">Lead Programmer & Systems Designer · Unity 2D</span>
+            </div>
+            <p>Turowa gra karciana rozwijana jako projekt dyplomowy, oparta na systemie walki i zarządzaniu energią. W obecnym portfolio jest pokazana jako projekt w trakcie projektowania. [page:50]</p>
+            <ul>
+              <li>Systemy kart i mechanik tury. [page:50]</li>
+              <li>Balans oraz fundamenty designu. [page:50]</li>
+              <li>Łączenie game designu z implementacją. [page:50]</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="curriculum-vitae" style="--delay:110ms;">
+        <div class="section-header">
+          <span class="eyebrow">Curriculum Vitae (CV)</span>
+          <h2>Education & Work Experience</h2>
+          <p class="lead">Josh ma na stronie bardzo rozbudowaną sekcję CV z historią zawodową, zakresami ról i opisem odpowiedzialności. U Ciebie ta część została skrojona tak, żeby wyglądała profesjonalnie, ale jednocześnie uczciwie względem poziomu student/junior developer. [page:51]</p>
+        </div>
+        <div class="stack">
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Collegium Da Vinci</h3>
+              <span class="meta">Game Development · Poznań · Student</span>
+            </div>
+            <p>Studiujesz Game Development i łączysz naukę z równoległą pracą oraz własnymi projektami. Twoje obecne portfolio przedstawia Cię jako Game Developer / Technical Designer, a opis podkreśla pracę w Unity i Unreal Engine. [page:50]</p>
+          </article>
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Security / Reception Roles</h3>
+              <span class="meta">Client Support · Reporting · Operations</span>
+            </div>
+            <p>Masz doświadczenie w rolach ochrony i recepcji, gdzie pracowałeś z obsługą zgłoszeń, raportowaniem i kontaktem z klientami, co wzmacnia obraz osoby odpowiedzialnej, zorganizowanej i przyzwyczajonej do pracy procesowej. [cite:2]</p>
+          </article>
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Independent Portfolio & Web Development</h3>
+              <span class="meta">HTML · CSS · JavaScript · GitHub</span>
+            </div>
+            <p>Budujesz własne portfolio, iterujesz układ strony, dbasz o estetykę i dostosowujesz materiały pod rekrutację. W obecnej wersji masz już publiczne portfolio z sekcją projektów oraz technologiami takimi jak C++, C#, Unity, Unreal Engine, Jira, Git i GitHub. [page:50]</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="technical-skills" style="--delay:150ms;">
+        <div class="section-header">
+          <span class="eyebrow">Technical Skills</span>
+          <h2>Engines, Tools, Workflow</h2>
+          <p class="lead">Na stronie Josh prezentuje języki, silniki, narzędzia i software jako osobny blok techniczny. W Twojej wersji zachowałem ten schemat, ale oparty na technologiach, które już masz pokazane w obecnym portfolio i w swoim profilu. [page:51][page:50]</p>
+        </div>
+        <div class="double">
+          <div class="mini-card">
+            <h3>Core Stack</h3>
+            <div class="chips">
+              <span class="chip">C#</span>
+              <span class="chip">C++</span>
+              <span class="chip">Unity</span>
+              <span class="chip">Unreal Engine</span>
+              <span class="chip">Git</span>
+              <span class="chip">GitHub</span>
+              <span class="chip">Jira</span>
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">JavaScript</span>
+            </div>
+          </div>
+          <div class="mini-card">
+            <h3>Focus Areas</h3>
+            <ul>
+              <li>Gameplay programming.</li>
+              <li>Technical design i systems thinking.</li>
+              <li>UI / UX implementation.</li>
+              <li>Version control i iteracja projektu.</li>
+              <li>Budowanie czytelnych portfolio pages.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="personal-projects" style="--delay:190ms;">
+        <div class="section-header">
+          <span class="eyebrow">Personal Projects</span>
+          <h2>Portfolio Direction</h2>
+          <p class="lead">Josh ma oddzielną sekcję „Personal Projects”, w której pokazuje mniejsze lub bardziej autorskie rzeczy. U Ciebie sensownie jest użyć tej części do pokazania kierunku rozwoju, procesu i osobistych projektów poza głównym blokiem produkcyjnym. [page:51]</p>
+        </div>
+        <div class="stack">
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Portfolio Version 1</h3>
+              <span class="meta">Current public showcase</span>
+            </div>
+            <p>Obecna strona główna działa jak portfolio showcase z kartami projektów, opisem i sekcją techniczną. To bardziej landing i szybki przegląd najważniejszych rzeczy. [page:50]</p>
+          </article>
+          <article class="entry">
+            <div class="entry-top">
+              <h3>Portfolio Version 2</h3>
+              <span class="meta">Public CV / portfolio page</span>
+            </div>
+            <p>Ta nowa wersja jest pomyślana jako oddzielna strona, którą możesz udostępniać rekruterom jako publiczny profil z CV, projektami, skillami i kontaktem — w stylu bliższym personal site niż klasycznemu landing page’owi. [page:51]</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="contact-me" style="--delay:230ms;">
+        <div class="section-header">
+          <span class="eyebrow">Contact Me</span>
+          <h2>Public links & contact</h2>
+          <p class="lead">Na końcu portfolio Josh zamyka stronę sekcją kontaktową z mailami i linkami społecznościowymi. Tę samą logikę zachowałem tutaj, żeby każdy mógł wejść i od razu znaleźć sposób kontaktu. [page:51]</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <strong>Email</strong>
+            <a href="mailto:kamilmiklaszewski.dev@gmail.com">kamilmiklaszewski.dev@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/kamil-miklaszewski-7a5609201" target="_blank" rel="noopener noreferrer">linkedin.com/in/kamil-miklaszewski-7a5609201</a>
+          </div>
+          <div class="contact-card">
+            <strong>GitHub</strong>
+            <a href="https://github.com/kmiklaszewski1" target="_blank" rel="noopener noreferrer">github.com/kmiklaszewski1</a>
+          </div>
+        </div>
+        <p class="footer-note" style="margin-top:18px;">Gotowe do wrzucenia jako osobna podstrona, np. <code>/portfolio2.html</code> albo osobny folder w GitHub Pages. [page:50]</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    const navLinks = document.querySelectorAll('.nav a');
+    const watchedSections = [...navLinks].map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(link => link.classList.remove('active'));
+        const current = document.querySelector(`.nav a[href="#${entry.target.id}"]`);
+        if (current) current.classList.add('active');
+      });
+    }, { threshold: 0.4 });
+
+    watchedSections.forEach((section) => activeObserver.observe(section));
+  </script>
+</body>
+</html>
